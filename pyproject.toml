@@ -1,0 +1,15 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Anton Simonov", email = "asimonov215@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.89.1",
+    "uvicorn>=0.20.0",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
