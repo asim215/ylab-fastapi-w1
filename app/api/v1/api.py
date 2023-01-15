@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.v1.routers import menus, submenus, dishes
+from api.v1.routers import menus, submenus, dishes
 
 # TODO Change prefixs
 api_router = APIRouter()

@@ -1,9 +1,9 @@
 [tool.pdm]
 
 [project]
-name = ""
-version = ""
-description = ""
+name = "app"
+version = "0.1.0"
+description = "YLab W1 Assignment"
 authors = [
     {name = "Anton Simonov", email = "asimonov215@gmail.com"},
 ]
