@@ -8,10 +8,10 @@ class Dish(SqlAlchemyBase):
     __tablename__ = "dishes"
 
     id = sa.Column(sa.String, primary_key=True)
-    title = sa.Column(sa.String)
-    description = sa.Column(sa.String)
+    title = sa.Column(sa.String, nullable=False, index=True)
+    description = sa.Column(sa.String, nullable=True)
     # Float or Str?
-    price = sa.Column(sa.Float)
+    price = sa.Column(sa.Float, nullable=False, default=0)
     submenu_id = sa.Column(sa.ForeignKey("submenus.id"))
 
     def __repr__(self):

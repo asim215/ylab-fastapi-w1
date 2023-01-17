@@ -8,9 +8,9 @@ class Submenu(SqlAlchemyBase):
     __tablename__ = "submenus"
 
     id = sa.Column(sa.String, primary_key=True)
-    title = sa.Column(sa.String)
-    description = sa.Column(sa.String)
-    dishes_count = sa.Column(sa.Integer)
+    title = sa.Column(sa.String, nullable=False, index=True)
+    description = sa.Column(sa.String, nullable=True)
+    dishes_count = sa.Column(sa.Integer, nullable=False, index=True, default=0)
     menu_id = sa.Column(sa.ForeignKey("menus.id"))
 
     def __repr__(self):
