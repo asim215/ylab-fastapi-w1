@@ -25,4 +25,5 @@ async def index() -> dict:
 
 
 if __name__ == "__main__":
+    configure_db()
     uvicorn.run("main:app", reload=True)
