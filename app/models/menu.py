@@ -1,10 +1,12 @@
 import sqlalchemy as sa
 
+from app.models.modelbase import SqlAlchemyBase
+
 # from sqlalchemy.dialects.postgresql import UUID
 # import uuid
 
 
-class Menu:
+class Menu(SqlAlchemyBase):
     # Set name for table
     __tablename__ = "menus"
 

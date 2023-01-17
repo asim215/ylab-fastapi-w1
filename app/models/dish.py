@@ -1,7 +1,9 @@
 import sqlalchemy as sa
 
+from app.models.modelbase import SqlAlchemyBase
 
-class Dish:
+
+class Dish(SqlAlchemyBase):
     # Set name for table
     __tablename__ = "dishes"
 
