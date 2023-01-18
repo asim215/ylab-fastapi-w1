@@ -1,11 +1,22 @@
 # ylab-fastapi-w1
 YLab assignment for week 1
 
-Dependency manager **pdm**
+Dependency manager is **pdm**
 
-`pdm venv create`
+```bash
+git clone "https://github.com/asim215/ylab-fastapi-w1"
 
+cd ylab-fastapi-w1/
 
+pdm venv create 3.10
+
+pdm sync
+
+pdm venv activate 3.10
+
+which python
+# output must be like .local/share/pdm/venvs/ylab-fastapi-w1-W_YdBBDC-3.10/bin/python
+```
 
 To run project
 
