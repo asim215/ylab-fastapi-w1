@@ -1,6 +1,12 @@
 # ylab-fastapi-w1
 YLab assignment for week 1
 
+Dependency manager **pdm**
+
+`pdm venv create`
+
+
+
 To run project
 
 `python app/main.py`
