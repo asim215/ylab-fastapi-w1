@@ -11,8 +11,6 @@ cd ylab-fastapi-w1/
 
 pdm venv create 3.10
 
-pdm sync
-
 pdm venv activate 3.10
 ```
 
@@ -30,6 +28,8 @@ $ eval (pdm venv activate 3.10)
 ```bash
 which python
 # output must be like .local/share/pdm/venvs/ylab-fastapi-w1-W_YdBBDC-3.10/bin/python
+# Install dependencies
+pdm sync
 ```
 
 To run project
