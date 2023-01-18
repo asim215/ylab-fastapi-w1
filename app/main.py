@@ -12,15 +12,14 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
 def configure_db_sqlite():
-    # working dir
     db_file = os.path.join(os.path.dirname(__file__), "db", "app.sqlite")
     db_session.global_init_sqlite(db_file)
 
 
 def configure_db_pg():
-    # working dir
-    # db_file = os.path.join(os.path.dirname(__file__), "db", "app.sqlite")
-    db_session.global_init_pg()
+    # AsyncIO
+    db_session.global_init_pg(True)
+    # db_session.global_init_pg()
 
 
 @app.get("/")
