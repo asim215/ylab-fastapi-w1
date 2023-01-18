@@ -5,7 +5,7 @@ from app.models.modelbase import SqlAlchemyBase
 factory = None
 
 
-def global_init(db_file: str):
+def global_init_sqlite(db_file: str):
     global factory
     if factory:
         return
@@ -14,6 +14,31 @@ def global_init(db_file: str):
         raise Exception("You must specify a db file.")
 
     conn_str = "sqlite:///" + db_file.strip()
+    print(f"Connecting to DB with {conn_str}")
+
+    # echo=False to silience sql commands
+    engine = sa.create_engine(conn_str, echo=True)
+
+    factory = orm.sessionmaker(bind=engine)
+
+    # To sqlalchemy know all models to build
+    # from app.models.menu import Menu
+    # from app.models.submenu import Submenu
+    # from app.models.dish import Dish
+    import app.models.__all_models
+
+    SqlAlchemyBase.metadata.create_all(engine)
+
+
+def global_init_pg():
+    global factory
+    if factory:
+        return
+
+    # if not db_file or not db_file.strip():
+    #     raise Exception("You must specify a db file.")
+
+    conn_str = "postgresql://postgres:admin2255@localhost:5432/ylab_w1"
     print(f"Connecting to DB with {conn_str}")
 
     # echo=False to silience sql commands

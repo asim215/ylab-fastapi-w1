@@ -11,6 +11,9 @@ dependencies = [
     "fastapi>=0.89.1",
     "uvicorn>=0.20.0",
     "sqlalchemy>=1.4.46",
+    "psycopg2>=2.9.5",
+    "fastapi-utils>=0.2.1",
+    "sqlalchemy-utils>=0.39.0",
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}
