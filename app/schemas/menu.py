@@ -24,7 +24,7 @@ class MenuUpdate(MenuBase):
 # Properties shared by models stored in DB
 class MenuInDBBase(MenuBase):
     # id: int
-    id: str
+    id: int
     title: str
     description: str
 
@@ -35,7 +35,7 @@ class MenuInDBBase(MenuBase):
 # Properties to return to client
 class Menu(MenuInDBBase):
     # id: int
-    id: str
+    id: int
     title: str
     description: str
 
