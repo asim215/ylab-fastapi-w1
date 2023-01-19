@@ -1,8 +1,7 @@
 from typing import Optional
 
 from pydantic import BaseModel
-from uuid import UUID
-import uuid
+from uuid import uuid4, UUID
 
 
 # Shared properties
@@ -13,7 +12,7 @@ class MenuBase(BaseModel):
 
 # Properties to receive on item creation
 class MenuCreate(MenuBase):
-    id: UUID = uuid.uuid4()
+    id: UUID = uuid4()
     title: str
     description: str
     # description: Optional[str]

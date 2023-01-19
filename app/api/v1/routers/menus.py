@@ -30,15 +30,12 @@ async def add_menu(req: MenuCreate, sess: Session = Depends(sess_db)):
     menu: Menu = Menu(title=req.title, description=req.description)
     result = crud.insert(menu)
     return await JSONResponse(content={"message": "menu created"}, status_code=200)
-    # return "Hey"
     if result is True:
         return menu
     else:
         return JSONResponse(
             content={"message": "create menu problem encountered"}, status_code=500
         )
-    # return menu from db
-    # return result
 
 
 @router.get("/", response_model=List[schemas.Menu])

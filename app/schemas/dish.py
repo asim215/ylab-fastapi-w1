@@ -1,6 +1,6 @@
 from typing import Optional
 
-from uuid import UUID
+from uuid import uuid4, UUID
 from pydantic import BaseModel
 
 
@@ -13,6 +13,7 @@ class DishBase(BaseModel):
 
 # Properties to receive on item creation
 class DishCreate(DishBase):
+    id: UUID = uuid4()
     title: str
     description: str
     price: float
@@ -28,7 +29,6 @@ class DishUpdate(DishBase):
 # Properties shared by models stored in DB
 class DishInDBBase(DishBase):
     id: UUID
-    # id: int
     title: str
     description: str
     price: float
@@ -40,7 +40,6 @@ class DishInDBBase(DishBase):
 # Properties to return to client
 class Dish(DishInDBBase):
     id: UUID
-    # id: int
     title: str
     description: str
     price: float
