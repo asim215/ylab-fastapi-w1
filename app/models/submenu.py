@@ -31,6 +31,7 @@ class Submenu(SqlAlchemyBase):
         UUIDType(binary=False),
         sa.ForeignKey("menus.id", ondelete="CASCADE"),
         index=True,
+        nullable=False,
     )
     menu = relationship("Menu")
     # Dishes relationship

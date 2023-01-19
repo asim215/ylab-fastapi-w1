@@ -30,6 +30,7 @@ class Dish(SqlAlchemyBase):
         UUIDType(binary=False),
         sa.ForeignKey("submenus.id", ondelete="CASCADE"),
         index=True,
+        nullable=False,
     )
     submenu = relationship("Submenu")
     # submenu = orm.relation("Submenu")

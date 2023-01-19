@@ -1,5 +1,6 @@
 from typing import Optional
 
+from uuid import UUID
 from pydantic import BaseModel
 
 
@@ -26,12 +27,11 @@ class DishUpdate(DishBase):
 
 # Properties shared by models stored in DB
 class DishInDBBase(DishBase):
-    id: int
-    # id: str
+    id: UUID
+    # id: int
     title: str
     description: str
     price: float
-    # price: str
 
     class Config:
         orm_mode = True
@@ -39,12 +39,11 @@ class DishInDBBase(DishBase):
 
 # Properties to return to client
 class Dish(DishInDBBase):
-    id: int
-    # id: str
+    id: UUID
+    # id: int
     title: str
     description: str
     price: float
-    # price: str
 
 
 # Properties properties stored in DB

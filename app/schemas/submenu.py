@@ -1,5 +1,6 @@
 from typing import Optional
 
+from uuid import UUID
 from pydantic import BaseModel
 
 
@@ -23,8 +24,8 @@ class SubmenuUpdate(SubmenuBase):
 
 # Properties shared by models stored in DB
 class SubmenuInDBBase(SubmenuBase):
-    id: int
-    # id: str
+    id: UUID
+    # id: int
     title: str
     description: str
 
@@ -34,8 +35,8 @@ class SubmenuInDBBase(SubmenuBase):
 
 # Properties to return to client
 class Submenu(SubmenuInDBBase):
-    id: int
-    # id: str
+    id: UUID
+    # id: int
     title: str
     description: str
 

@@ -21,13 +21,16 @@ def sess_db():
         db.close()
 
 
+# Request validation by pydantic from schema base class
 @router.post("/")
 async def add_menu(req: MenuCreate, sess: Session = Depends(sess_db)):
-    # add menu to db with: title, description
-    # Model of Menu
+    print("Inside post menu")
     crud: CRUDMenu = CRUDMenu(sess)
+    print("Create instance of menu from req")
     menu: Menu = Menu(title=req.title, description=req.description)
     result = crud.insert(menu)
+    return await JSONResponse(content={"message": "menu created"}, status_code=200)
+    # return "Hey"
     if result is True:
         return menu
     else:

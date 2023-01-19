@@ -9,10 +9,14 @@ from app.models.modelbase import SqlAlchemyBase
 from app.models.submenu import Submenu
 
 from sqlalchemy_utils import UUIDType
-from sqlalchemy.dialects.postgresql import UUID
 
 # from sqlalchemy.dialects.postgresql import UUID
 import uuid
+from uuid import UUID
+
+
+def gen_uuid() -> UUID:
+    return uuid.uuid4()
 
 
 class Menu(SqlAlchemyBase):
@@ -26,7 +30,8 @@ class Menu(SqlAlchemyBase):
 
     # print(str(uuid.uuid4()))
     # id = sa.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    id = sa.Column(UUIDType(binary=False), primary_key=True, default=uuid.uuid4)
+    # id = sa.Column(UUIDType(binary=False), primary_key=True, default=uuid.uuid4)
+    id = sa.Column(UUIDType(binary=False), primary_key=True, default=gen_uuid)
     # id = sa.Column(
     #     UUIDType(binary=False), primary_key=True, default=lambda: uuid.uuid4()
     # )
