@@ -27,10 +27,11 @@ class MenuUpdate(MenuBase):
 
 # Properties shared by models stored in DB
 class MenuInDBBase(MenuBase):
-    # Convert to UUID from str request
     id: UUID
     title: str
     description: str
+    submenus_count: int
+    dishes_count: int
 
     class Config:
         orm_mode = True

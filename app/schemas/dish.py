@@ -15,7 +15,6 @@ class DishBase(BaseModel):
 class DishCreate(DishBase):
     id: UUID = uuid4()
     title: str
-    # description: str
     description: Optional[str]
     price: float
 
@@ -23,9 +22,7 @@ class DishCreate(DishBase):
 # Properties to receive on item update
 class DishUpdate(DishBase):
     title: str
-    # description: str
     description: Optional[str]
-    # price: float
     price: Optional[float]
 
 

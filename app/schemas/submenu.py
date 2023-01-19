@@ -30,6 +30,7 @@ class SubmenuInDBBase(SubmenuBase):
     id: UUID
     title: str
     description: str
+    dishes_count: int
 
     class Config:
         orm_mode = True

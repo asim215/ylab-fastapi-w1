@@ -44,8 +44,8 @@ def global_init_pg(drop: bool = False):
     # To sqlalchemy know all models to build
     import app.models.__all_models
 
-    print(type(SqlAlchemyBase))
-    print(type(SqlAlchemyBase.metadata))
+    # print(type(SqlAlchemyBase))
+    # print(type(SqlAlchemyBase.metadata))
 
     # Async with dropCreation
     async def init_models(drop_all: bool):
