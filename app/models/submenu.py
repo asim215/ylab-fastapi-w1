@@ -6,7 +6,8 @@ from app.models.dish import Dish
 
 # from fastapi_utils.guid_type import GUID
 
-# import uuid
+from sqlalchemy_utils import UUIDType
+import uuid
 
 from app.models.modelbase import SqlAlchemyBase
 
@@ -18,14 +19,18 @@ class Submenu(SqlAlchemyBase):
     # id = sa.Column(sa.String, primary_key=True)
     # id = sa.Column(GUID, primary_key=True)
     # id = sa.Column(sa.String, primary_key=True, default=lambda: str(uuid.uuid4().hex))
-    id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
+    id = sa.Column(UUIDType(binary=False), primary_key=True, default=uuid.uuid4)
+    # id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     # Must be unique for each menu
     title = sa.Column(sa.String, unique=True, nullable=False, index=True)
     description = sa.Column(sa.String, default="")
     dishes_count = sa.Column(sa.Integer, index=True, default=0)
     # Menu relationship
     menu_id = sa.Column(
-        sa.Integer, sa.ForeignKey("menus.id", ondelete="CASCADE"), index=True
+        # sa.Integer, sa.ForeignKey("menus.id", ondelete="CASCADE"), index=True
+        UUIDType(binary=False),
+        sa.ForeignKey("menus.id", ondelete="CASCADE"),
+        index=True,
     )
     menu = relationship("Menu")
     # Dishes relationship
