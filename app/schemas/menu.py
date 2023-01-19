@@ -14,21 +14,21 @@ class MenuBase(BaseModel):
 class MenuCreate(MenuBase):
     id: UUID = uuid4()
     title: str
-    description: str
-    # description: Optional[str]
+    # description: str
+    description: Optional[str]
 
 
 # Properties to receive on item update
 class MenuUpdate(MenuBase):
     title: str
-    description: str
+    # description: str
+    description: Optional[str]
 
 
 # Properties shared by models stored in DB
 class MenuInDBBase(MenuBase):
     # Convert to UUID from str request
     id: UUID
-    # id: int
     title: str
     description: str
 
@@ -39,9 +39,10 @@ class MenuInDBBase(MenuBase):
 # Properties to return to client
 class Menu(MenuInDBBase):
     id: UUID
-    # id: int
     title: str
     description: str
+    submenus_count: int
+    dishes_count: int
 
 
 # Properties properties stored in DB

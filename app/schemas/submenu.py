@@ -14,13 +14,15 @@ class SubmenuBase(BaseModel):
 class SubmenuCreate(SubmenuBase):
     id: UUID = uuid4()
     title: str
-    description: str
+    # description: str
+    description: Optional[str]
 
 
 # Properties to receive on item update
 class SubmenuUpdate(SubmenuBase):
     title: str
-    description: str
+    # description: str
+    description: Optional[str]
 
 
 # Properties shared by models stored in DB
@@ -38,6 +40,7 @@ class Submenu(SubmenuInDBBase):
     id: UUID
     title: str
     description: str
+    dishes_count: int
 
 
 # Properties properties stored in DB

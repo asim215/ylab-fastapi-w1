@@ -11,12 +11,8 @@ from app.models.submenu import Submenu
 from sqlalchemy_utils import UUIDType
 
 # from sqlalchemy.dialects.postgresql import UUID
-import uuid
-from uuid import UUID
-
-
-def gen_uuid() -> UUID:
-    return uuid.uuid4()
+# import uuid
+from uuid import uuid4, UUID
 
 
 class Menu(SqlAlchemyBase):
@@ -28,26 +24,19 @@ class Menu(SqlAlchemyBase):
     # id = sa.Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE)
     # id = sa.Column(UUIDType(binary=False), primary_key=True, default=uuid.uuid4)
 
-    # print(str(uuid.uuid4()))
     # id = sa.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     # id = sa.Column(UUIDType(binary=False), primary_key=True, default=uuid.uuid4)
-    id = sa.Column(UUIDType(binary=False), primary_key=True, default=gen_uuid)
+    id = sa.Column(UUIDType(binary=False), primary_key=True, default=uuid4)
     # id = sa.Column(
     #     UUIDType(binary=False), primary_key=True, default=lambda: uuid.uuid4()
     # )
     # Not allowed to be null
     title = sa.Column(sa.String, unique=True, nullable=False, index=True)
     # Allowed empty
-    description = sa.Column(sa.String, default="")
+    description = sa.Column(sa.String, nullable=True, default="")
     # Count, index makes count fast
-    # submenus_count = sa.Column(sa.Integer, index=True, default=0)
     submenus_count = sa.Column(sa.Integer, index=True, default=0)
     dishes_count = sa.Column(sa.Integer, index=True, default=0)
-    # sa.func.count("submenus.id")
-    # id = sa.Column(UUID(as_uuid=False), primary_key=True)
-    # id = sa.Column(sa.String, primary_key=True, autoincrement=True)
-
-    # submenus: List[Submenu] = orm.relation("Submenu", order_by=True)
 
     # Submenus relationship
     submenus: List[Submenu] = relationship(

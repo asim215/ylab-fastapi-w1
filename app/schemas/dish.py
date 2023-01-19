@@ -15,15 +15,18 @@ class DishBase(BaseModel):
 class DishCreate(DishBase):
     id: UUID = uuid4()
     title: str
-    description: str
+    # description: str
+    description: Optional[str]
     price: float
 
 
 # Properties to receive on item update
 class DishUpdate(DishBase):
     title: str
-    description: str
-    price: float
+    # description: str
+    description: Optional[str]
+    # price: float
+    price: Optional[float]
 
 
 # Properties shared by models stored in DB
