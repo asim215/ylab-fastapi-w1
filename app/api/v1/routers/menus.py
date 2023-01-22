@@ -24,7 +24,13 @@ async def add_menu(req: MenuCreate):
                 title=req.title,
                 description=req.description,
             )
-            return await crud.insert(menu)
+            # return await crud.insert(menu)
+            if await crud.insert(menu):
+                # Return created menu
+                return JSONResponse(content={"message": "menu"}, status_code=201)
+            else:
+                # Return error JSON
+                return JSONResponse(content={"message": "error on add_menu"})
 
 
 @router.patch("/")

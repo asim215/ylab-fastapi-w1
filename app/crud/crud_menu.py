@@ -25,6 +25,7 @@ class CRUDMenu:
             # self.sess.add(menu)
             # self.sess.commit()
         except Exception:
+            print("Exception on insert menu")
             return False
         return True
 
