@@ -14,14 +14,12 @@ class MenuBase(BaseModel):
 class MenuCreate(MenuBase):
     id: UUID = uuid4()
     title: str
-    # description: str
-    description: Optional[str]
+    description: Optional[str] = ""
 
 
 # Properties to receive on item update
 class MenuUpdate(MenuBase):
     title: str
-    # description: str
     description: Optional[str]
 
 
@@ -33,6 +31,7 @@ class MenuInDBBase(MenuBase):
     submenus_count: int
     dishes_count: int
 
+    # Need in async?
     class Config:
         orm_mode = True
 

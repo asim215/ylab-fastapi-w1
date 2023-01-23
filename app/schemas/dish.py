@@ -15,7 +15,7 @@ class DishBase(BaseModel):
 class DishCreate(DishBase):
     id: UUID = uuid4()
     title: str
-    description: Optional[str]
+    description: Optional[str] = ""
     price: float
 
 

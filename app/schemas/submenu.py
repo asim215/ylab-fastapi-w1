@@ -14,14 +14,12 @@ class SubmenuBase(BaseModel):
 class SubmenuCreate(SubmenuBase):
     id: UUID = uuid4()
     title: str
-    # description: str
-    description: Optional[str]
+    description: Optional[str] = ""
 
 
 # Properties to receive on item update
 class SubmenuUpdate(SubmenuBase):
     title: str
-    # description: str
     description: Optional[str]
 
 

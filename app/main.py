@@ -3,10 +3,13 @@ import uvicorn
 import os
 from app.api.v1.api import api_router
 from app.core.config import settings
-
 import app.db.session as db_session
+from starlette.requests import Request
+from starlette.templating import Jinja2Templates
 
 app = FastAPI(title="YLab-W1")
+# Manage all templates
+templates = Jinja2Templates("app/templates")
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
@@ -19,12 +22,14 @@ def configure_db_sqlite():
 def configure_db_pg():
     # AsyncIO
     db_session.global_init_pg(True)
-    # db_session.global_init_pg()
 
 
 @app.get("/")
-async def index() -> dict:
-    return {"message": "Hello Home page"}
+async def index(request: Request):
+    return templates.TemplateResponse(
+        "home/index.html",
+        {"request": request},
+    )
 
 
 if __name__ == "__main__":
