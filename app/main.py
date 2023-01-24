@@ -3,15 +3,16 @@ import uvicorn
 import os
 from app.api.v1.api import api_router
 from app.core.config import settings
+
+# from fastapi.responses import HTMLResponse
 import app.db.session as db_session
-from starlette.requests import Request
-from starlette.templating import Jinja2Templates
+
+from fastapi.staticfiles import StaticFiles
+
+# from fastapi.templating import Jinja2Templates
+from app.views import home
 
 app = FastAPI(title="YLab-W1")
-# Manage all templates
-templates = Jinja2Templates("app/templates")
-
-app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
 def configure_db_sqlite():
@@ -20,19 +21,22 @@ def configure_db_sqlite():
 
 
 def configure_db_pg():
-    # AsyncIO
     db_session.global_init_pg(True)
 
 
-@app.get("/")
-async def index(request: Request):
-    return templates.TemplateResponse(
-        "home/index.html",
-        {"request": request},
-    )
+def configure_routing():
+    app.mount("/static", StaticFiles(directory="app/static"), name="static")
+    app.include_router(api_router, prefix=settings.API_V1_STR)
+    app.include_router(home.router)
+
+
+def configure():
+    configure_routing()
+    configure_db_pg()
 
 
 if __name__ == "__main__":
-    # configure_db_sqlite()
-    configure_db_pg()
+    configure()
     uvicorn.run("main:app", reload=True)
+else:
+    configure()

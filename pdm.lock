@@ -2,6 +2,12 @@
 # It is not intended for manual editing.
 
 [[package]]
+name = "aiofiles"
+version = "22.1.0"
+requires_python = ">=3.7,<4.0"
+summary = "File support for asyncio."
+
+[[package]]
 name = "aiopg"
 version = "1.4.0"
 requires_python = ">=3.7"
@@ -184,9 +190,13 @@ dependencies = [
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:6957e3b9e192fd9495b2bec5a04652b808e169feee4445d4ac8664df2b1615cd"
+content_hash = "sha256:34415f319da853d292850f10bf2fac8c19619405a9db154a8bab1ebbf171190d"
 
 [metadata.files]
+"aiofiles 22.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/86/26/6e5060a159a6131c430e8a01ec8327405a19a449a506224b394e36f2ebc9/aiofiles-22.1.0.tar.gz", hash = "sha256:9107f1ca0b2a5553987a94a3c9959fe5b491fdf731389aa5b7b1bd0733e32de6"},
+    {url = "https://files.pythonhosted.org/packages/a0/48/d5d1ab7cfe46e573c3694fa1365442a7d7cadc3abb03d8507e58a3755bb2/aiofiles-22.1.0-py3-none-any.whl", hash = "sha256:1142fa8e80dbae46bb6339573ad4c8c0841358f79c6eb50a493dceca14621bad"},
+]
 "aiopg 1.4.0" = [
     {url = "https://files.pythonhosted.org/packages/9b/2f/ab8690bf995171b9a8b60b98a2ca91d4108a42422abf10bf622397437d26/aiopg-1.4.0-py3-none-any.whl", hash = "sha256:aea46e8aff30b039cfa818e6db4752c97656e893fc75e5a5dc57355a9e9dedbd"},
     {url = "https://files.pythonhosted.org/packages/b0/0a/aba75a9ffcb1704b98c39986344230eaa70c40ac28e5ca635df231db912f/aiopg-1.4.0.tar.gz", hash = "sha256:116253bef86b4d954116716d181e9a0294037f266718b2e1c9766af995639d71"},
